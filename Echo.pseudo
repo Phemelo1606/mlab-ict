@@ -1,0 +1,124 @@
+START
+/*START
+
+1. Gather these items:
+   - water
+   - kettle
+   - cup
+   - tea bag
+   - sugar (only if you want sweet tea)
+   - milk (only if you want creamy tea)
+   - teaspoon
+
+2. Check whether the kettle has water.
+   - If it has water, look at how much water is there.
+   - If there is not enough water, add more water to the kettle.
+   - If the kettle has no water, fill it with water.
+
+3. Put the kettle on the stove or plug it in.
+   - Heat the water until it boils.
+
+4. Place the tea bag into the cup.
+
+5. Pour the boiled water into the cup.
+   - Leave the tea bag in the cup for a few minutes so the tea can brew.
+
+6. If you want sugar, add sugar to the tea.
+   - Stir with the teaspoon.
+   - Taste the tea.
+   - If it is not sweet enough, add a little more sugar and stir again.
+   - Keep doing this until the tea tastes sweet enough.
+
+7. If you want milk, pour milk into the tea.
+   - Stir with the teaspoon.
+   - Taste the tea.
+   - If it is not milky enough, add a little more milk and stir again.
+   - Keep doing this until the tea tastes the way you want.
+
+8. Stir the tea once more so everything mixes well.
+
+9. If you want the tea bag removed, take it out.
+   - If not, leave it in the cup.
+
+10. Serve the tea and say: "Tea is done."
+
+END*/
+START
+// The program asks the user for preferences about the tea.
+INPUTS:
+  wantsSugar
+  wantsMilk //the user inputs whether they want milk in their tea
+  removeTeabag
+  wantedSweetness //the user inputs how much sugar they want before process starts
+  wantedMilk //the user inputs whether they want milk in their tea
+
+  currentSweetness //the current sweetness of the tea=0
+  currentMilk //the current amount of milk in the tea=0
+
+// These are the items needed to make the tea.
+INGREDIENTS:
+  water
+  kettle
+  cup
+  tea bag
+  sugar (optional)
+  milk (optional)
+  teaspoon
+
+
+
+  // Check whether the kettle has water before starting.
+  IF kettle has water = true THEN
+    IF the water is enough = true THEN
+      boil water
+      ELSE
+        POUR water INTO kettle
+        boil water
+    END IF
+ ELSE
+        POUR water INTO kettle
+        boil water
+    END IF
+
+  // Put the tea bag in the cup and add the hot water.
+  PUT tea bag INTO cup
+  POUR boiled water INTO cup
+
+  // If the user wants sugar, add sugar and keep stirring until the tea tastes sweet enough.
+  IF wantsSugar == true THEN
+  currentSweetness = 0 //sugar is zero
+
+WHILE currentSweetness < wantedSweetness // cup- 0 sugar < wanted 4 tsp sugar
+      POUR sugar INTO cup //addds the wanted sugar into cup
+      USE teaspoon TO STIR ingredients IN cup //stirs the sugar and tea bag in cup
+      currentSweetness = currentSweetness + 1 //increments the current sweetness of tea by 1
+      CHECK sweetness of tea// incrementing the current sweetness of tea
+
+      END WHILE
+  END IF
+
+
+  // If the user wants milk, add milk and keep adding until the milk amount is enough.
+  IF wantsMilk == true THEN
+    currentMilk = 0
+
+    WHILE currentMilk < wantedMilk
+      POUR milk INTO cup
+      USE teaspoon TO STIR ingredients IN cup
+        currentMilk = currentMilk + 1
+      CHECK milk of tea
+      END WHILE
+  END IF
+
+
+  // Remove the tea bag if the user wants it removed.
+  IF removeTeabag == true THEN
+    REMOVE tea bag
+    ELSE
+    LEAVE tea bag IN cup
+  END IF
+
+  // Tell the user the tea is ready.
+  OUTPUT "Tea is done"
+
+END
